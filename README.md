@@ -79,9 +79,11 @@ Run the `IdeaSparkTests` test target from Xcode. The current tests cover:
 - difficulty filtering
 - avoiding immediate repeats when alternatives exist
 - decoding bundled local JSON
+- handling empty or malformed local JSON
 - decoding API responses
 - mapping malformed API JSON
 - mapping API server errors
+- mapping API timeout and client-error status codes
 - mapping API network errors
 - rejecting non-HTTPS backend URLs
 - rejecting backend URLs with embedded credentials or URL parameters

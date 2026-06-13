@@ -77,6 +77,24 @@ final class LocalIdeaServiceTests: XCTestCase {
         })
     }
 
+    func testEmptyLocalIdeasJSONThrowsNoIdeasAvailable() {
+        do {
+            _ = try LocalIdeaService.decodeIdeas(from: Data("[]".utf8))
+            XCTFail("Expected noIdeasAvailable")
+        } catch {
+            XCTAssertEqual(error as? IdeaGenerationError, .noIdeasAvailable)
+        }
+    }
+
+    func testInvalidLocalIdeasJSONThrowsDecodingFailed() {
+        do {
+            _ = try LocalIdeaService.decodeIdeas(from: Data("{not-json".utf8))
+            XCTFail("Expected decodingFailed")
+        } catch {
+            XCTAssertEqual(error as? IdeaGenerationError, .decodingFailed)
+        }
+    }
+
     private static let sampleIdeas = [
         idea(
             id: UUID(uuidString: "22222222-2222-4222-8222-222222222223")!,

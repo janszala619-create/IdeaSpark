@@ -83,6 +83,52 @@ final class APIIdeaServiceTests: XCTestCase {
         }
     }
 
+    func testRequestTimeoutStatusIsMapped() async {
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(
+                url: request.url!,
+                statusCode: 408,
+                httpVersion: nil,
+                headerFields: nil
+            )!
+            return (response, Data())
+        }
+        let service = APIIdeaService(
+            baseURL: URL(string: "https://api.example.com")!,
+            session: Self.mockSession()
+        )
+
+        do {
+            _ = try await service.generateIdea(category: nil, difficulty: nil)
+            XCTFail("Expected timeout")
+        } catch {
+            XCTAssertEqual(error as? IdeaGenerationError, .timeout)
+        }
+    }
+
+    func testClientErrorIsMappedToInvalidResponse() async {
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(
+                url: request.url!,
+                statusCode: 404,
+                httpVersion: nil,
+                headerFields: nil
+            )!
+            return (response, Data())
+        }
+        let service = APIIdeaService(
+            baseURL: URL(string: "https://api.example.com")!,
+            session: Self.mockSession()
+        )
+
+        do {
+            _ = try await service.generateIdea(category: nil, difficulty: nil)
+            XCTFail("Expected invalidResponse")
+        } catch {
+            XCTAssertEqual(error as? IdeaGenerationError, .invalidResponse)
+        }
+    }
+
     func testNetworkErrorIsMapped() async {
         MockURLProtocol.requestHandler = { _ in
             throw URLError(.notConnectedToInternet)
