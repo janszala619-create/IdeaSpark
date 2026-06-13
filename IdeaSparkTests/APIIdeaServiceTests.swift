@@ -217,23 +217,25 @@ final class APIIdeaServiceTests: XCTestCase {
         var buffer = [UInt8](repeating: 0, count: 1024)
 
         while bodyStream.hasBytesAvailable {
-            let bytesRead = buffer.withUnsafeMutableBytes { rawBuffer in
-                guard let baseAddress = rawBuffer.bindMemory(to: UInt8.self).baseAddress else {
-                    return 0
-                }
-                return bodyStream.read(baseAddress, maxLength: buffer.count)
-            }
-            if bytesRead < 0 {
-                throw bodyStream.streamError ?? URLError(.cannotDecodeContentData)
-            }
-            if bytesRead == 0 {
-                break
-            }
-            data.append(buffer, count: bytesRead)
-        }
+            let maxLength = buffer.count
 
-        return data
+let bytesRead = buffer.withUnsafeMutableBytes { rawBuffer in
+    guard let baseAddress = rawBuffer.bindMemory(to: UInt8.self).baseAddress else {
+        return 0
     }
+
+    return bodyStream.read(baseAddress, maxLength: maxLength)
+}
+
+if bytesRead < 0 {
+    throw bodyStream.streamError ?? URLError(.cannotDecodeContentData)
+}
+
+if bytesRead == 0 {
+    break
+}
+
+data.append(buffer, count: bytesRead)
 
     private static let validResponseData = """
     {
