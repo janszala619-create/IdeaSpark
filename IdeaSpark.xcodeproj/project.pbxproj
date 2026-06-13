@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		100000000000000000000001 /* IdeaSparkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000001 /* IdeaSparkApp.swift */; };
+		100000000000000000000002 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000002 /* AppView.swift */; };
+		100000000000000000000003 /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000003 /* AppTab.swift */; };
+		100000000000000000000004 /* ProjectIdea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000004 /* ProjectIdea.swift */; };
+		100000000000000000000005 /* IdeaCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000005 /* IdeaCategory.swift */; };
+		100000000000000000000006 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000006 /* DifficultyLevel.swift */; };
+		100000000000000000000007 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000007 /* LoadingState.swift */; };
+		100000000000000000000008 /* IdeaGenerationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000008 /* IdeaGenerationError.swift */; };
+		100000000000000000000009 /* IdeaGenerating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000009 /* IdeaGenerating.swift */; };
+		10000000000000000000000A /* LocalIdeaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000A /* LocalIdeaService.swift */; };
+		10000000000000000000000B /* APIIdeaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000B /* APIIdeaService.swift */; };
+		10000000000000000000000C /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000C /* AppConfiguration.swift */; };
+		10000000000000000000000D /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000D /* HapticManager.swift */; };
+		10000000000000000000000E /* FavoriteIdeaEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000E /* FavoriteIdeaEntity.swift */; };
+		10000000000000000000000F /* HistoryIdeaEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000F /* HistoryIdeaEntity.swift */; };
+		100000000000000000000010 /* IdeaPersistenceStores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000010 /* IdeaPersistenceStores.swift */; };
+		100000000000000000000011 /* CategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000011 /* CategoryPicker.swift */; };
+		100000000000000000000012 /* DifficultyBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000012 /* DifficultyBadge.swift */; };
+		100000000000000000000013 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000013 /* EmptyStateView.swift */; };
+		100000000000000000000014 /* IdeaRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000014 /* IdeaRowView.swift */; };
+		100000000000000000000015 /* IdeaCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000015 /* IdeaCardView.swift */; };
+		100000000000000000000016 /* IdeaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000016 /* IdeaDetailView.swift */; };
+		100000000000000000000017 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000017 /* DiscoverViewModel.swift */; };
+		100000000000000000000018 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000018 /* DiscoverView.swift */; };
+		100000000000000000000019 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000019 /* FavoritesView.swift */; };
+		10000000000000000000001A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001A /* HistoryView.swift */; };
+		10000000000000000000001B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001B /* SettingsView.swift */; };
+		10000000000000000000001C /* ideas.json in Resources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001C /* ideas.json */; };
+		10000000000000000000001D /* ideas.json in Resources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001C /* ideas.json */; };
+		100000000000000000000101 /* LocalIdeaServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001D /* LocalIdeaServiceTests.swift */; };
+		100000000000000000000102 /* APIIdeaServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001E /* APIIdeaServiceTests.swift */; };
+		100000000000000000000103 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001F /* PersistenceTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		600000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000000000002;
+			remoteInfo = IdeaSpark;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		200000000000000000000001 /* IdeaSparkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSparkApp.swift; sourceTree = "<group>"; };
+		200000000000000000000002 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		200000000000000000000003 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
+		200000000000000000000004 /* ProjectIdea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectIdea.swift; sourceTree = "<group>"; };
+		200000000000000000000005 /* IdeaCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaCategory.swift; sourceTree = "<group>"; };
+		200000000000000000000006 /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
+		200000000000000000000007 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		200000000000000000000008 /* IdeaGenerationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaGenerationError.swift; sourceTree = "<group>"; };
+		200000000000000000000009 /* IdeaGenerating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaGenerating.swift; sourceTree = "<group>"; };
+		20000000000000000000000A /* LocalIdeaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalIdeaService.swift; sourceTree = "<group>"; };
+		20000000000000000000000B /* APIIdeaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIIdeaService.swift; sourceTree = "<group>"; };
+		20000000000000000000000C /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		20000000000000000000000D /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		20000000000000000000000E /* FavoriteIdeaEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteIdeaEntity.swift; sourceTree = "<group>"; };
+		20000000000000000000000F /* HistoryIdeaEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIdeaEntity.swift; sourceTree = "<group>"; };
+		200000000000000000000010 /* IdeaPersistenceStores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaPersistenceStores.swift; sourceTree = "<group>"; };
+		200000000000000000000011 /* CategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPicker.swift; sourceTree = "<group>"; };
+		200000000000000000000012 /* DifficultyBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyBadge.swift; sourceTree = "<group>"; };
+		200000000000000000000013 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		200000000000000000000014 /* IdeaRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaRowView.swift; sourceTree = "<group>"; };
+		200000000000000000000015 /* IdeaCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaCardView.swift; sourceTree = "<group>"; };
+		200000000000000000000016 /* IdeaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailView.swift; sourceTree = "<group>"; };
+		200000000000000000000017 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		200000000000000000000018 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
+		200000000000000000000019 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		20000000000000000000001A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		20000000000000000000001B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		20000000000000000000001C /* ideas.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ideas.json; sourceTree = "<group>"; };
+		20000000000000000000001D /* LocalIdeaServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalIdeaServiceTests.swift; sourceTree = "<group>"; };
+		20000000000000000000001E /* APIIdeaServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIIdeaServiceTests.swift; sourceTree = "<group>"; };
+		20000000000000000000001F /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000020 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		200000000000000000000021 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		200000000000000000000022 /* IdeaSpark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaSpark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000023 /* IdeaSparkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdeaSparkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		500000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		500000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		300000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000003 /* IdeaSpark */,
+				300000000000000000000013 /* IdeaSparkTests */,
+				300000000000000000000014 /* Config */,
+				300000000000000000000002 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		300000000000000000000002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000022 /* IdeaSpark.app */,
+				200000000000000000000023 /* IdeaSparkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		300000000000000000000003 /* IdeaSpark */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000004 /* App */,
+				300000000000000000000005 /* Models */,
+				300000000000000000000006 /* Services */,
+				300000000000000000000007 /* Persistence */,
+				300000000000000000000008 /* Components */,
+				300000000000000000000009 /* Features */,
+				300000000000000000000012 /* Resources */,
+			);
+			path = IdeaSpark;
+			sourceTree = "<group>";
+		};
+		300000000000000000000004 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000001 /* IdeaSparkApp.swift */,
+				200000000000000000000002 /* AppView.swift */,
+				200000000000000000000003 /* AppTab.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		300000000000000000000005 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000004 /* ProjectIdea.swift */,
+				200000000000000000000005 /* IdeaCategory.swift */,
+				200000000000000000000006 /* DifficultyLevel.swift */,
+				200000000000000000000007 /* LoadingState.swift */,
+				200000000000000000000008 /* IdeaGenerationError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		300000000000000000000006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000009 /* IdeaGenerating.swift */,
+				20000000000000000000000A /* LocalIdeaService.swift */,
+				20000000000000000000000B /* APIIdeaService.swift */,
+				20000000000000000000000C /* AppConfiguration.swift */,
+				20000000000000000000000D /* HapticManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		300000000000000000000007 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000000E /* FavoriteIdeaEntity.swift */,
+				20000000000000000000000F /* HistoryIdeaEntity.swift */,
+				200000000000000000000010 /* IdeaPersistenceStores.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		300000000000000000000008 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000011 /* CategoryPicker.swift */,
+				200000000000000000000012 /* DifficultyBadge.swift */,
+				200000000000000000000013 /* EmptyStateView.swift */,
+				200000000000000000000014 /* IdeaRowView.swift */,
+				200000000000000000000015 /* IdeaCardView.swift */,
+				200000000000000000000016 /* IdeaDetailView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		300000000000000000000009 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				30000000000000000000000A /* Discover */,
+				30000000000000000000000B /* Favorites */,
+				30000000000000000000000C /* History */,
+				30000000000000000000000D /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000A /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000017 /* DiscoverViewModel.swift */,
+				200000000000000000000018 /* DiscoverView.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000B /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000019 /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000C /* History */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000001A /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000001B /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		300000000000000000000012 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000001C /* ideas.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		300000000000000000000013 /* IdeaSparkTests */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000001D /* LocalIdeaServiceTests.swift */,
+				20000000000000000000001E /* APIIdeaServiceTests.swift */,
+				20000000000000000000001F /* PersistenceTests.swift */,
+			);
+			path = IdeaSparkTests;
+			sourceTree = "<group>";
+		};
+		300000000000000000000014 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000020 /* Debug.xcconfig */,
+				200000000000000000000021 /* Release.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000000000000000000002 /* IdeaSpark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 400000000000000000000002 /* Build configuration list for PBXNativeTarget "IdeaSpark" */;
+			buildPhases = (
+				500000000000000000000003 /* Sources */,
+				500000000000000000000001 /* Frameworks */,
+				500000000000000000000004 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IdeaSpark;
+			productName = IdeaSpark;
+			productReference = 200000000000000000000022 /* IdeaSpark.app */;
+			productType = "com.apple.product-type.application";
+		};
+		000000000000000000000003 /* IdeaSparkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 400000000000000000000003 /* Build configuration list for PBXNativeTarget "IdeaSparkTests" */;
+			buildPhases = (
+				500000000000000000000005 /* Sources */,
+				500000000000000000000002 /* Frameworks */,
+				500000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				600000000000000000000002 /* PBXTargetDependency */,
+			);
+			name = IdeaSparkTests;
+			productName = IdeaSparkTests;
+			productReference = 200000000000000000000023 /* IdeaSparkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					000000000000000000000002 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					000000000000000000000003 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 000000000000000000000002;
+					};
+				};
+			};
+			buildConfigurationList = 400000000000000000000001 /* Build configuration list for PBXProject "IdeaSpark" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 300000000000000000000001;
+			productRefGroup = 300000000000000000000002 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000000000000000000000002 /* IdeaSpark */,
+				000000000000000000000003 /* IdeaSparkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		500000000000000000000004 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10000000000000000000001C /* ideas.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		500000000000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10000000000000000000001D /* ideas.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		500000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000001 /* IdeaSparkApp.swift in Sources */,
+				100000000000000000000002 /* AppView.swift in Sources */,
+				100000000000000000000003 /* AppTab.swift in Sources */,
+				100000000000000000000004 /* ProjectIdea.swift in Sources */,
+				100000000000000000000005 /* IdeaCategory.swift in Sources */,
+				100000000000000000000006 /* DifficultyLevel.swift in Sources */,
+				100000000000000000000007 /* LoadingState.swift in Sources */,
+				100000000000000000000008 /* IdeaGenerationError.swift in Sources */,
+				100000000000000000000009 /* IdeaGenerating.swift in Sources */,
+				10000000000000000000000A /* LocalIdeaService.swift in Sources */,
+				10000000000000000000000B /* APIIdeaService.swift in Sources */,
+				10000000000000000000000C /* AppConfiguration.swift in Sources */,
+				10000000000000000000000D /* HapticManager.swift in Sources */,
+				10000000000000000000000E /* FavoriteIdeaEntity.swift in Sources */,
+				10000000000000000000000F /* HistoryIdeaEntity.swift in Sources */,
+				100000000000000000000010 /* IdeaPersistenceStores.swift in Sources */,
+				100000000000000000000011 /* CategoryPicker.swift in Sources */,
+				100000000000000000000012 /* DifficultyBadge.swift in Sources */,
+				100000000000000000000013 /* EmptyStateView.swift in Sources */,
+				100000000000000000000014 /* IdeaRowView.swift in Sources */,
+				100000000000000000000015 /* IdeaCardView.swift in Sources */,
+				100000000000000000000016 /* IdeaDetailView.swift in Sources */,
+				100000000000000000000017 /* DiscoverViewModel.swift in Sources */,
+				100000000000000000000018 /* DiscoverView.swift in Sources */,
+				100000000000000000000019 /* FavoritesView.swift in Sources */,
+				10000000000000000000001A /* HistoryView.swift in Sources */,
+				10000000000000000000001B /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		500000000000000000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000101 /* LocalIdeaServiceTests.swift in Sources */,
+				100000000000000000000102 /* APIIdeaServiceTests.swift in Sources */,
+				100000000000000000000103 /* PersistenceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		600000000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000000000002 /* IdeaSpark */;
+			targetProxy = 600000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		400000000000000000000004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		400000000000000000000005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		400000000000000000000006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 200000000000000000000020 /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = IdeaSpark;
+				INFOPLIST_KEY_IDEASPARK_API_BASE_URL = "$(IDEASPARK_API_BASE_URL)";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.IdeaSpark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		400000000000000000000007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 200000000000000000000021 /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = IdeaSpark;
+				INFOPLIST_KEY_IDEASPARK_API_BASE_URL = "$(IDEASPARK_API_BASE_URL)";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.IdeaSpark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		400000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.IdeaSparkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IdeaSpark.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IdeaSpark";
+			};
+			name = Debug;
+		};
+		400000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.IdeaSparkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IdeaSpark.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IdeaSpark";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		400000000000000000000001 /* Build configuration list for PBXProject "IdeaSpark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400000000000000000000004 /* Debug */,
+				400000000000000000000005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		400000000000000000000002 /* Build configuration list for PBXNativeTarget "IdeaSpark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400000000000000000000006 /* Debug */,
+				400000000000000000000007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		400000000000000000000003 /* Build configuration list for PBXNativeTarget "IdeaSparkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400000000000000000000008 /* Debug */,
+				400000000000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000000000000000000000001 /* Project object */;
+}

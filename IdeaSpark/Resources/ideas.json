@@ -1,0 +1,222 @@
+[
+  {
+    "id": "11111111-1111-4111-8111-111111111111",
+    "title": "SprintBoard",
+    "summary": "Ein leichtes Kanban-Board fuer Lernprojekte mit Tageszielen.",
+    "category": "webApp",
+    "difficulty": "beginner",
+    "features": ["Drag-and-drop Spalten", "Tagesziel-Markierung", "Projektarchiv"],
+    "extensionIdea": "Team-Freigaben fuer kleine Lerngruppen",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111112",
+    "title": "BudgetBuddy",
+    "summary": "Eine Web-App, die fixe und variable Ausgaben visuell trennt.",
+    "category": "webApp",
+    "difficulty": "intermediate",
+    "features": ["Monatsdiagramme", "Kategorie-Regeln", "CSV-Import"],
+    "extensionIdea": "Automatische Sparziel-Vorschlaege",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111113",
+    "title": "DocsLens",
+    "summary": "Ein Dokumentenportal mit Rollen, Kommentaren und Aenderungsverlauf.",
+    "category": "webApp",
+    "difficulty": "advanced",
+    "features": ["Rollenrechte", "Inline-Kommentare", "Versionenvergleich"],
+    "extensionIdea": "Freigabe-Workflows mit E-Mail-Benachrichtigung",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111114",
+    "title": "StudySprint",
+    "summary": "Eine iPhone-App fuer kurze fokussierte Lerneinheiten.",
+    "category": "mobileApp",
+    "difficulty": "beginner",
+    "features": ["Lern-Timer", "Aufgabenliste", "Fortschrittsuebersicht"],
+    "extensionIdea": "Synchronisation ueber mehrere Geraete",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111115",
+    "title": "PantryPal",
+    "summary": "Eine mobile Vorratsliste, die bald ablaufende Lebensmittel hervorhebt.",
+    "category": "mobileApp",
+    "difficulty": "intermediate",
+    "features": ["Barcode-Scan", "Ablaufdaten", "Einkaufsliste"],
+    "extensionIdea": "Rezeptvorschlaege aus vorhandenen Zutaten",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111116",
+    "title": "TrailMate",
+    "summary": "Eine Outdoor-App fuer Offline-Routen, Notizen und Foto-Wegpunkte.",
+    "category": "mobileApp",
+    "difficulty": "advanced",
+    "features": ["Offline-Karten", "GPS-Wegpunkte", "Routenexport"],
+    "extensionIdea": "Sicherheits-Check-ins fuer Kontakte",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111117",
+    "title": "PromptCoach",
+    "summary": "Ein AI-Lernhelfer, der Prompts bewertet und bessere Varianten erklaert.",
+    "category": "artificialIntelligence",
+    "difficulty": "beginner",
+    "features": ["Prompt-Bewertung", "Beispielantworten", "Verbesserungstipps"],
+    "extensionIdea": "Persoenlicher Verlauf mit Lernstatistiken",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111118",
+    "title": "MeetingMiner",
+    "summary": "Ein Tool, das Meeting-Notizen in Aufgaben und Entscheidungen zerlegt.",
+    "category": "artificialIntelligence",
+    "difficulty": "intermediate",
+    "features": ["Transkript-Import", "Aufgabenextraktion", "Entscheidungslog"],
+    "extensionIdea": "Export zu Projektmanagement-Tools",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111119",
+    "title": "BugTriage AI",
+    "summary": "Ein Klassifikator, der Bugreports nach Risiko und betroffenen Modulen sortiert.",
+    "category": "artificialIntelligence",
+    "difficulty": "advanced",
+    "features": ["Issue-Import", "Risikoscoring", "Aehnliche Bugs"],
+    "extensionIdea": "Vorschlaege fuer passende Code-Owner",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111120",
+    "title": "PixelHarvest",
+    "summary": "Ein kleines Sammelspiel, bei dem Spieler Ressourcen in kurzen Runden optimieren.",
+    "category": "game",
+    "difficulty": "beginner",
+    "features": ["Grid-Bewegung", "Rundenlimit", "Highscore"],
+    "extensionIdea": "Taegliche Challenge-Karten",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111121",
+    "title": "CipherQuest",
+    "summary": "Ein Puzzle-Spiel, das Logikraetsel mit einfachen Verschluesselungen verbindet.",
+    "category": "game",
+    "difficulty": "intermediate",
+    "features": ["Level-Editor", "Hinweissystem", "Zeitwertung"],
+    "extensionIdea": "Community-Level mit Bewertungsfunktion",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111122",
+    "title": "OrbitForge",
+    "summary": "Eine 2D-Weltraumsimulation mit Ressourcenketten und orbitaler Logistik.",
+    "category": "game",
+    "difficulty": "advanced",
+    "features": ["Orbit-Mechanik", "Basisbau", "Lieferketten"],
+    "extensionIdea": "Prozedural generierte Sonnensysteme",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111123",
+    "title": "RegexGarden",
+    "summary": "Ein visuelles Lernwerkzeug fuer regulaere Ausdruecke mit Live-Beispielen.",
+    "category": "tool",
+    "difficulty": "beginner",
+    "features": ["Live-Highlighting", "Beispielbibliothek", "Erklaertexte"],
+    "extensionIdea": "Interaktive Uebungssets",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111124",
+    "title": "API Notebook",
+    "summary": "Ein lokaler Client zum Sammeln, Testen und Dokumentieren von API-Requests.",
+    "category": "tool",
+    "difficulty": "intermediate",
+    "features": ["Request-Sammlungen", "Umgebungsvariablen", "Response-Verlauf"],
+    "extensionIdea": "Automatische Markdown-Dokumentation",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111125",
+    "title": "SchemaScout",
+    "summary": "Ein Developer-Tool, das JSON-Schemas analysiert und Testdaten erzeugt.",
+    "category": "tool",
+    "difficulty": "advanced",
+    "features": ["Schema-Parser", "Testdaten-Generator", "Validierungsbericht"],
+    "extensionIdea": "Diffs zwischen Schema-Versionen",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111126",
+    "title": "InboxSorter",
+    "summary": "Eine Automatisierung, die Newsletter erkennt und in Themenordner vorsortiert.",
+    "category": "automation",
+    "difficulty": "beginner",
+    "features": ["Regel-Builder", "Absendergruppen", "Wochenbericht"],
+    "extensionIdea": "Vorschlaege fuer neue Filterregeln",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111127",
+    "title": "DeployWatch",
+    "summary": "Ein Monitor, der Deployments prueft und Fehlermuster in Logs erkennt.",
+    "category": "automation",
+    "difficulty": "intermediate",
+    "features": ["Webhook-Eingang", "Log-Pruefungen", "Status-Benachrichtigungen"],
+    "extensionIdea": "Rollback-Empfehlungen nach Fehlerschwellen",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111128",
+    "title": "InvoiceFlow",
+    "summary": "Eine Automatisierung fuer Rechnungseingang, Freigabe und Export.",
+    "category": "automation",
+    "difficulty": "advanced",
+    "features": ["PDF-Erkennung", "Freigaberegeln", "Buchhaltungs-Export"],
+    "extensionIdea": "Anomalieerkennung fuer ungewoehnliche Betraege",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111129",
+    "title": "PortfolioPulse",
+    "summary": "Eine Web-App, die Portfolio-Projekte als Timeline und Skill-Matrix zeigt.",
+    "category": "webApp",
+    "difficulty": "beginner",
+    "features": ["Projekt-Timeline", "Skill-Tags", "Kontaktformular"],
+    "extensionIdea": "PDF-Export fuer Bewerbungen",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111130",
+    "title": "HabitNest",
+    "summary": "Eine mobile Gewohnheits-App mit kleinen Belohnungen und Wochenfokus.",
+    "category": "mobileApp",
+    "difficulty": "beginner",
+    "features": ["Streaks", "Wochenziel", "Widget-Daten"],
+    "extensionIdea": "Geteilte Challenges mit Freunden",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111131",
+    "title": "CodeReview Radar",
+    "summary": "Ein AI-Assistent, der Pull Requests nach Risiko und Testluecken zusammenfasst.",
+    "category": "artificialIntelligence",
+    "difficulty": "intermediate",
+    "features": ["PR-Zusammenfassung", "Risikohinweise", "Testempfehlungen"],
+    "extensionIdea": "Team-spezifische Review-Checklisten",
+    "isAIGenerated": false
+  },
+  {
+    "id": "11111111-1111-4111-8111-111111111132",
+    "title": "BackupPilot",
+    "summary": "Eine Automatisierung, die lokale Projektordner versioniert und pruefbar sichert.",
+    "category": "automation",
+    "difficulty": "intermediate",
+    "features": ["Zeitplan", "Integritaetspruefung", "Speicherbericht"],
+    "extensionIdea": "Benachrichtigung bei fehlgeschlagenen Backups",
+    "isAIGenerated": false
+  }
+]
