@@ -5,7 +5,7 @@ import SwiftUI
 struct FavoritesView: View {
     @Environment(\.modelContext) private var modelContext
     @AppStorage("hapticsEnabled") private var hapticsEnabled = true
-    @Query(sort: \.createdAt, order: .reverse) private var favorites: [FavoriteIdeaEntity]
+    @Query(sort: \FavoriteIdeaEntity.createdAt, order: .reverse) private var favorites: [FavoriteIdeaEntity]
 
     var body: some View {
         Group {

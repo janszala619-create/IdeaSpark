@@ -5,7 +5,7 @@ import SwiftUI
 struct HistoryView: View {
     @Environment(\.modelContext) private var modelContext
     @AppStorage("hapticsEnabled") private var hapticsEnabled = true
-    @Query(sort: \.displayedAt, order: .reverse) private var history: [HistoryIdeaEntity]
+    @Query(sort: \HistoryIdeaEntity.displayedAt, order: .reverse) private var history: [HistoryIdeaEntity]
     @Query private var favorites: [FavoriteIdeaEntity]
 
     var body: some View {
