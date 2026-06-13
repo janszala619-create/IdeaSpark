@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   windows-preflight:
     name: Windows preflight
@@ -101,6 +104,7 @@ jobs:
 
       - name: Build for simulator
         run: |
+          set +e
           set -o pipefail
           xcodebuild build \
             -project IdeaSpark.xcodeproj \
@@ -109,9 +113,29 @@ jobs:
             -destination "id=${SIMULATOR_ID}" \
             CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee TestResults/build.log
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+          python3 - <<'PY'
+          from pathlib import Path
+
+          log = Path("TestResults/build.log").read_text(errors="replace")
+          interesting = [
+              line for line in log.splitlines()
+              if "error:" in line.lower()
+              or "build failed" in line.lower()
+              or "xcodebuild:" in line.lower()
+              or "failed" in line.lower()
+          ]
+          summary = "\n".join(interesting[-25:] or log.splitlines()[-80:])
+          summary = summary.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+          print(f"::error title=Xcode build failed::{summary}")
+          PY
+            exit "$status"
+          fi
 
       - name: Run tests
         run: |
+          set +e
           set -o pipefail
           xcodebuild test \
             -project IdeaSpark.xcodeproj \
@@ -121,6 +145,25 @@ jobs:
             -resultBundlePath TestResults/IdeaSpark.xcresult \
             CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee TestResults/test.log
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+          python3 - <<'PY'
+          from pathlib import Path
+
+          log = Path("TestResults/test.log").read_text(errors="replace")
+          interesting = [
+              line for line in log.splitlines()
+              if "error:" in line.lower()
+              or "test failed" in line.lower()
+              or "failed" in line.lower()
+              or "xcodebuild:" in line.lower()
+          ]
+          summary = "\n".join(interesting[-25:] or log.splitlines()[-80:])
+          summary = summary.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+          print(f"::error title=Xcode tests failed::{summary}")
+          PY
+            exit "$status"
+          fi
 
       - name: Upload build and test results
         if: always()
