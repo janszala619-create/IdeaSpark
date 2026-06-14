@@ -7,7 +7,7 @@ final class APIIdeaServiceTests: XCTestCase {
         MockURLProtocol.requestHandler = nil
         MockURLProtocol.responseDelay = 0
         super.tearDown()
-    }
+      }
 
     func testDecodesAPIResponse() async throws {
         MockURLProtocol.requestHandler = { request in
