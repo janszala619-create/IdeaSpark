@@ -124,16 +124,32 @@ function buildPrompt({ category, difficulty }) {
   const difficultyLine = difficulty
     ? `Schwierigkeit: ${difficulty}`
     : `Schwierigkeit: waehle genau eine aus ${DIFFICULTY_VALUES.join(", ")}`;
+  const inspirationSeed = `${Date.now()}-${crypto.randomUUID()}`;
 
   return [
-    "Erstelle eine frische Software-Projektidee fuer die native iOS-App IdeaSpark.",
+    "Recherchiere zuerst aktuelle Produkt-, Developer-, Startup-, App- und Automatisierungstrends im Web.",
+    "Erstelle danach genau eine frische Software-Projektidee fuer die native iOS-App IdeaSpark.",
     categoryLine,
     difficultyLine,
+    `Inspiration-Seed fuer Varianz: ${inspirationSeed}`,
     "Antworte auf Deutsch, aber verwende fuer category und difficulty exakt die erlaubten Raw Values.",
+    "Vermeide generische Standardideen wie einfache Todo-Listen, Wetter-Apps, Budget-Tracker oder Habit-Tracker, ausser du kombinierst sie mit einem ungewoehnlichen aktuellen Kontext.",
+    "Nenne keine Quellen im JSON und kopiere keine Produktnamen; nutze Web-Funde nur als Inspiration.",
     "Die Idee soll praktisch umsetzbar sein und keine API-Schluessel, Geheimnisse oder illegalen Inhalte benoetigen.",
     "Gib kurze, konkrete Feature-Namen und eine sinnvolle Erweiterungsidee zurueck.",
     "Setze isAIGenerated immer auf true.",
   ].join("\n");
+}
+
+function webSearchTool() {
+  return {
+    type: "web_search",
+    search_context_size: process.env.OPENAI_WEB_SEARCH_CONTEXT || "medium",
+    user_location: {
+      type: "approximate",
+      country: process.env.OPENAI_SEARCH_COUNTRY || "DE",
+    },
+  };
 }
 
 function extractResponseText(responseJson) {
@@ -196,12 +212,17 @@ async function createIdeaWithOpenAI({ category, difficulty, fetchImpl = fetch })
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: process.env.OPENAI_MODEL || "gpt-5.2",
+      model: process.env.OPENAI_MODEL || "gpt-5.5",
+      reasoning: {
+        effort: process.env.OPENAI_REASONING_EFFORT || "low",
+      },
+      tools: [webSearchTool()],
+      tool_choice: "required",
       input: [
         {
           role: "system",
           content:
-            "Du bist ein kreativer Produktcoach. Du gibst ausschliesslich valides JSON entsprechend dem Schema zurueck.",
+            "Du bist ein kreativer Produktcoach. Du recherchierst aktuelle Signale im Web und gibst danach ausschliesslich valides JSON entsprechend dem Schema zurueck.",
         },
         {
           role: "user",
@@ -276,3 +297,4 @@ module.exports.createIdeaWithOpenAI = createIdeaWithOpenAI;
 module.exports.extractResponseText = extractResponseText;
 module.exports.normalizeIdeaPayload = normalizeIdeaPayload;
 module.exports.validateFilter = validateFilter;
+module.exports.webSearchTool = webSearchTool;

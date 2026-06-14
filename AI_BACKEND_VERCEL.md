@@ -6,7 +6,7 @@ Dieses Repo enthaelt ein kleines Vercel-Backend fuer die KI-Funktion der iOS-App
 POST /api/generate-idea
 ```
 
-Die iPhone-App sendet Kategorie und Schwierigkeit an diesen Endpunkt. Das Backend ruft OpenAI serverseitig auf und gibt ein `ProjectIdea`-JSON zurueck, das die App direkt decodieren kann.
+Die iPhone-App sendet Kategorie und Schwierigkeit an diesen Endpunkt. Das Backend ruft OpenAI serverseitig auf, nutzt Web Search als Inspirationsquelle und gibt ein `ProjectIdea`-JSON zurueck, das die App direkt decodieren kann.
 
 ## Warum ein Backend?
 
@@ -23,10 +23,18 @@ Der OpenAI API-Key darf nicht in die iOS-App. Eine App kann leicht ausgelesen we
 
 ```text
 OPENAI_API_KEY=dein_openai_api_key
-OPENAI_MODEL=gpt-5.2
+OPENAI_MODEL=gpt-5.5
+OPENAI_WEB_SEARCH_CONTEXT=medium
+OPENAI_SEARCH_COUNTRY=DE
+OPENAI_REASONING_EFFORT=low
 ```
 
-`OPENAI_MODEL` ist optional. Wenn du es nicht setzt, nutzt das Backend `gpt-5.2`.
+Nur `OPENAI_API_KEY` ist zwingend. Die anderen Variablen sind optional:
+
+- `OPENAI_MODEL`: Modell fuer die Ideen-Generierung. Standard ist `gpt-5.5`.
+- `OPENAI_WEB_SEARCH_CONTEXT`: `low`, `medium` oder `high`. Standard ist `medium`.
+- `OPENAI_SEARCH_COUNTRY`: Suchregion. Standard ist `DE`.
+- `OPENAI_REASONING_EFFORT`: Standard ist `low`, damit die Antwort schneller bleibt.
 
 7. Klicke **Deploy**.
 8. Kopiere danach die Vercel-Domain, zum Beispiel:
@@ -74,6 +82,7 @@ Die App sendet:
 ```
 
 Beide Felder duerfen auch fehlen. Das Backend waehlt dann passende Werte.
+Jeder AI-Aufruf fuehrt eine Web-Suche aus und nutzt einen frischen Inspiration-Seed, damit die Antworten weniger schnell in dieselben Standardideen zurueckfallen.
 
 Die App erwartet:
 

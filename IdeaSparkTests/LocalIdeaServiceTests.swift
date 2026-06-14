@@ -61,6 +61,22 @@ final class LocalIdeaServiceTests: XCTestCase {
         XCTAssertNotEqual(first.id, second.id)
     }
 
+    func testDoesNotRepeatMatchingIdeasUntilFilterPoolIsExhausted() async throws {
+        let ideas = [
+            Self.idea(id: UUID(uuidString: "22222222-2222-4222-8222-222222222231")!, title: "One"),
+            Self.idea(id: UUID(uuidString: "22222222-2222-4222-8222-222222222232")!, title: "Two"),
+            Self.idea(id: UUID(uuidString: "22222222-2222-4222-8222-222222222233")!, title: "Three")
+        ]
+        let service = LocalIdeaService(ideas: ideas)
+
+        let first = try await service.generateIdea(category: .tool, difficulty: .beginner)
+        let second = try await service.generateIdea(category: .tool, difficulty: .beginner)
+        let third = try await service.generateIdea(category: .tool, difficulty: .beginner)
+        let generatedIdeas = [first, second, third]
+
+        XCTAssertEqual(Set(generatedIdeas.map(\.id)).count, ideas.count)
+    }
+
     func testDecodesBundledIdeasJSON() throws {
         let bundle = Bundle.main
         let url = try XCTUnwrap(bundle.url(forResource: "ideas", withExtension: "json"))

@@ -1,6 +1,6 @@
 # IdeaSpark
 
-IdeaSpark is a native iOS 17 SwiftUI MVP for discovering software project ideas. It generates ideas from a bundled local dataset, stores favorites and history with SwiftData, and can optionally call a configurable backend endpoint for AI-generated ideas.
+IdeaSpark is a native iOS 17 SwiftUI MVP for discovering software project ideas. It generates ideas from a bundled local dataset, stores favorites and history with SwiftData, and can optionally call a configurable backend endpoint for AI-generated ideas with web-search-backed inspiration.
 
 ## Architecture
 
@@ -10,7 +10,7 @@ IdeaSpark is a native iOS 17 SwiftUI MVP for discovering software project ideas.
 - `IdeaSpark/Persistence`: SwiftData entities and small store helpers for favorites and capped history.
 - `IdeaSpark/Features`: Discover, Favorites, History, and Settings screens.
 - `IdeaSpark/Components`: reusable cards, rows, badges, pickers, detail, and empty states.
-- `IdeaSpark/Resources/ideas.json`: 22 local example ideas across all required categories.
+- `IdeaSpark/Resources/ideas.json`: 22 local example ideas across all required categories. Local generation now walks through the matching filter pool before repeating ideas.
 - `IdeaSparkTests`: focused XCTest coverage for generation, filters, decoding, API failures/timeouts, duplicate favorites, and history capping.
 
 The app intentionally keeps the architecture feature-oriented and small: SwiftUI owns UI state, services own generation/networking, and SwiftData helpers own persistence rules.
@@ -66,6 +66,7 @@ POST /api/generate-idea
 
 This repository includes a Vercel-compatible backend at `api/generate-idea.js`.
 Deploy it from GitHub, set `OPENAI_API_KEY` as a Vercel environment variable, then enter the deployed Vercel base URL in the IdeaSpark Settings tab.
+The backend uses OpenAI Web Search server-side, so AI ideas can be inspired by current web trends without exposing your API key in the iOS app.
 
 Configure the base URL in one of two places:
 
@@ -79,6 +80,7 @@ The API service requires HTTPS, rejects backend URLs with embedded credentials, 
 Run the `IdeaSparkTests` test target from Xcode. The current tests cover:
 
 - random local idea selection
+- local ideas do not repeat until the matching filter pool is exhausted
 - category filtering
 - difficulty filtering
 - avoiding immediate repeats when alternatives exist

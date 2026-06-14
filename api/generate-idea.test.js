@@ -7,6 +7,7 @@ const {
   extractResponseText,
   normalizeIdeaPayload,
   validateFilter,
+  webSearchTool,
 } = require("./generate-idea");
 
 test("validateFilter accepts missing filters and known raw values", () => {
@@ -29,7 +30,17 @@ test("buildPrompt keeps requested category and difficulty", () => {
 
   assert.match(prompt, /Kategorie: mobileApp/);
   assert.match(prompt, /Schwierigkeit: beginner/);
+  assert.match(prompt, /Recherchiere zuerst aktuelle/);
+  assert.match(prompt, /Inspiration-Seed fuer Varianz/);
   assert.match(prompt, /isAIGenerated immer auf true/);
+});
+
+test("webSearchTool enables web search with a German default location", () => {
+  const tool = webSearchTool();
+
+  assert.equal(tool.type, "web_search");
+  assert.equal(tool.search_context_size, "medium");
+  assert.equal(tool.user_location.country, "DE");
 });
 
 test("extractResponseText reads the Responses API convenience field", () => {
@@ -109,8 +120,17 @@ test("createIdeaWithOpenAI sends a structured Responses API request", async () =
     },
   });
 
-  process.env.OPENAI_API_KEY = previousKey;
-  process.env.OPENAI_MODEL = previousModel;
+  if (previousKey === undefined) {
+    delete process.env.OPENAI_API_KEY;
+  } else {
+    process.env.OPENAI_API_KEY = previousKey;
+  }
+
+  if (previousModel === undefined) {
+    delete process.env.OPENAI_MODEL;
+  } else {
+    process.env.OPENAI_MODEL = previousModel;
+  }
 
   assert.equal(capturedRequest.url, "https://api.openai.com/v1/responses");
   assert.equal(capturedRequest.options.method, "POST");
@@ -118,6 +138,9 @@ test("createIdeaWithOpenAI sends a structured Responses API request", async () =
 
   const body = JSON.parse(capturedRequest.options.body);
   assert.equal(body.model, "test-model");
+  assert.deepEqual(body.tools.map((tool) => tool.type), ["web_search"]);
+  assert.equal(body.tool_choice, "required");
+  assert.equal(body.reasoning.effort, "low");
   assert.equal(body.text.format.type, "json_schema");
   assert.equal(body.text.format.strict, true);
   assert.equal(idea.category, "tool");

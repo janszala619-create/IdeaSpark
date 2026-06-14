@@ -6,6 +6,7 @@ actor LocalIdeaService: IdeaGenerating {
     private let bundledIdeas: [ProjectIdea]?
     private var cachedIdeas: [ProjectIdea]?
     private var previousIdeaID: UUID?
+    private var servedIdeaIDsByFilter: [IdeaFilterKey: Set<UUID>] = [:]
 
     init(
         bundle: Bundle = .main,
@@ -32,13 +33,24 @@ actor LocalIdeaService: IdeaGenerating {
             throw IdeaGenerationError.noIdeasAvailable
         }
 
-        let nonRepeatingIdeas = filteredIdeas.filter { $0.id != previousIdeaID }
-        let selectionPool = nonRepeatingIdeas.isEmpty ? filteredIdeas : nonRepeatingIdeas
+        let filterKey = IdeaFilterKey(category: category, difficulty: difficulty)
+        var servedIdeaIDs = servedIdeaIDsByFilter[filterKey, default: []]
+        var freshIdeas = filteredIdeas.filter { !servedIdeaIDs.contains($0.id) }
+
+        if freshIdeas.isEmpty {
+            servedIdeaIDs.removeAll()
+            freshIdeas = filteredIdeas
+        }
+
+        let nonRepeatingIdeas = freshIdeas.filter { $0.id != previousIdeaID }
+        let selectionPool = nonRepeatingIdeas.isEmpty ? freshIdeas : nonRepeatingIdeas
 
         guard let idea = selectionPool.randomElement() else {
             throw IdeaGenerationError.noIdeasAvailable
         }
 
+        servedIdeaIDs.insert(idea.id)
+        servedIdeaIDsByFilter[filterKey] = servedIdeaIDs
         previousIdeaID = idea.id
         return idea
     }
@@ -92,4 +104,9 @@ actor LocalIdeaService: IdeaGenerating {
             throw IdeaGenerationError.decodingFailed
         }
     }
+}
+
+private struct IdeaFilterKey: Hashable {
+    let category: IdeaCategory?
+    let difficulty: DifficultyLevel?
 }

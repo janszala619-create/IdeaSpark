@@ -1,6 +1,6 @@
 import Foundation
 
-enum IdeaCategory: String, Codable, CaseIterable, Identifiable {
+enum IdeaCategory: String, Codable, CaseIterable, Hashable, Identifiable {
     case webApp
     case mobileApp
     case artificialIntelligence
