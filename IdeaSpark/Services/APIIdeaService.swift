@@ -13,7 +13,7 @@ struct APIIdeaService: IdeaGenerating {
     init(
         baseURL: URL,
         session: URLSession = .shared,
-        timeoutSeconds: TimeInterval = 10
+        timeoutSeconds: TimeInterval = 30
     ) {
         self.baseURL = baseURL
         self.session = session
