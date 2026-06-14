@@ -20,7 +20,8 @@ actor LocalIdeaService: IdeaGenerating {
 
     func generateIdea(
         category: IdeaCategory?,
-        difficulty: DifficultyLevel?
+        difficulty: DifficultyLevel?,
+        prompt: String? = nil
     ) async throws -> ProjectIdea {
         let ideas = try loadIdeas()
         let filteredIdeas = ideas.filter { idea in

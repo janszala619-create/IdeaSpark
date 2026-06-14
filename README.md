@@ -67,6 +67,7 @@ POST /api/generate-idea
 This repository includes a Vercel-compatible backend at `api/generate-idea.js`.
 Deploy it from GitHub, set `OPENAI_API_KEY` as a Vercel environment variable, then enter the deployed Vercel base URL in the IdeaSpark Settings tab.
 The backend uses OpenAI Web Search server-side, so AI ideas can be inspired by current web trends without exposing your API key in the iOS app.
+When the Discover tab is set to AI, users can enter keywords or a rough project context. The backend turns those keywords into a complete app idea with a target use case, concrete features, and an extension path.
 
 Configure the base URL in one of two places:
 
@@ -87,6 +88,7 @@ Run the `IdeaSparkTests` test target from Xcode. The current tests cover:
 - decoding bundled local JSON
 - handling empty or malformed local JSON
 - decoding API responses
+- sending AI prompt keywords to the backend
 - mapping malformed API JSON
 - mapping API server errors
 - mapping API timeout and client-error status codes

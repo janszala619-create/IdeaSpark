@@ -117,18 +117,40 @@ function validateFilter(value, allowedValues, fieldName) {
   return value;
 }
 
-function buildPrompt({ category, difficulty }) {
+function normalizePrompt(prompt) {
+  if (prompt === undefined || prompt === null) {
+    return undefined;
+  }
+
+  if (typeof prompt !== "string") {
+    throw new Error("Invalid prompt");
+  }
+
+  const normalizedPrompt = prompt.replace(/\s+/g, " ").trim();
+  if (!normalizedPrompt) {
+    return undefined;
+  }
+
+  return normalizedPrompt.slice(0, 600);
+}
+
+function buildPrompt({ category, difficulty, prompt }) {
   const categoryLine = category
     ? `Kategorie: ${category}`
     : `Kategorie: waehle genau eine aus ${CATEGORY_VALUES.join(", ")}`;
   const difficultyLine = difficulty
     ? `Schwierigkeit: ${difficulty}`
     : `Schwierigkeit: waehle genau eine aus ${DIFFICULTY_VALUES.join(", ")}`;
+  const promptLine = prompt
+    ? `Nutzer-Stichworte und Wunschkontext: ${prompt}`
+    : "Nutzer-Stichworte: keine angegeben; finde selbst einen aktuellen, konkreten Bedarf.";
   const inspirationSeed = `${Date.now()}-${crypto.randomUUID()}`;
 
   return [
     "Recherchiere zuerst aktuelle Produkt-, Developer-, Startup-, App- und Automatisierungstrends im Web.",
     "Erstelle danach genau eine frische Software-Projektidee fuer die native iOS-App IdeaSpark.",
+    promptLine,
+    "Mache aus den Stichworten eine vollstaendige App-Idee mit Zielgruppe, klarem Nutzen, konkreten Kernfeatures und einer realistischen Erweiterung.",
     categoryLine,
     difficultyLine,
     `Inspiration-Seed fuer Varianz: ${inspirationSeed}`,
@@ -197,7 +219,7 @@ function normalizeIdeaPayload(payload, requestedFilters = {}) {
   return idea;
 }
 
-async function createIdeaWithOpenAI({ category, difficulty, fetchImpl = fetch }) {
+async function createIdeaWithOpenAI({ category, difficulty, prompt, fetchImpl = fetch }) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     const error = new Error("OPENAI_API_KEY is not configured");
@@ -226,7 +248,7 @@ async function createIdeaWithOpenAI({ category, difficulty, fetchImpl = fetch })
         },
         {
           role: "user",
-          content: buildPrompt({ category, difficulty }),
+          content: buildPrompt({ category, difficulty, prompt }),
         },
       ],
       text: {
@@ -270,16 +292,18 @@ async function handler(req, res) {
 
   let category;
   let difficulty;
+  let prompt;
   try {
     category = validateFilter(body.category, CATEGORY_VALUES, "category");
     difficulty = validateFilter(body.difficulty, DIFFICULTY_VALUES, "difficulty");
+    prompt = normalizePrompt(body.prompt);
   } catch (error) {
     sendJson(res, 400, { error: error.message });
     return;
   }
 
   try {
-    const idea = await createIdeaWithOpenAI({ category, difficulty });
+    const idea = await createIdeaWithOpenAI({ category, difficulty, prompt });
     sendJson(res, 200, idea);
   } catch (error) {
     console.error(error);
@@ -296,5 +320,6 @@ module.exports.buildPrompt = buildPrompt;
 module.exports.createIdeaWithOpenAI = createIdeaWithOpenAI;
 module.exports.extractResponseText = extractResponseText;
 module.exports.normalizeIdeaPayload = normalizeIdeaPayload;
+module.exports.normalizePrompt = normalizePrompt;
 module.exports.validateFilter = validateFilter;
 module.exports.webSearchTool = webSearchTool;

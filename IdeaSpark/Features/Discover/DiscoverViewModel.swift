@@ -47,7 +47,8 @@ final class DiscoverViewModel {
         difficulty: DifficultyLevel?,
         source: IdeaSource,
         aiGenerationEnabled: Bool,
-        backendURLString: String
+        backendURLString: String,
+        prompt: String? = nil
     ) async {
         state = .loading
         notice = nil
@@ -58,7 +59,7 @@ final class DiscoverViewModel {
                     throw IdeaGenerationError.invalidBackendURL
                 }
                 let idea = try await apiServiceFactory(backendURL)
-                    .generateIdea(category: category, difficulty: difficulty)
+                    .generateIdea(category: category, difficulty: difficulty, prompt: prompt)
                 state = .loaded(idea)
                 return
             } catch {

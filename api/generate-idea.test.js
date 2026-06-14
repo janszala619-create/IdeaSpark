@@ -6,6 +6,7 @@ const {
   createIdeaWithOpenAI,
   extractResponseText,
   normalizeIdeaPayload,
+  normalizePrompt,
   validateFilter,
   webSearchTool,
 } = require("./generate-idea");
@@ -26,13 +27,26 @@ test("buildPrompt keeps requested category and difficulty", () => {
   const prompt = buildPrompt({
     category: "mobileApp",
     difficulty: "beginner",
+    prompt: "Fitness fuer Studenten mit Gamification",
   });
 
   assert.match(prompt, /Kategorie: mobileApp/);
   assert.match(prompt, /Schwierigkeit: beginner/);
+  assert.match(prompt, /Fitness fuer Studenten mit Gamification/);
+  assert.match(prompt, /vollstaendige App-Idee/);
   assert.match(prompt, /Recherchiere zuerst aktuelle/);
   assert.match(prompt, /Inspiration-Seed fuer Varianz/);
   assert.match(prompt, /isAIGenerated immer auf true/);
+});
+
+test("normalizePrompt trims whitespace and limits length", () => {
+  assert.equal(normalizePrompt("  Fitness   Kalender  "), "Fitness Kalender");
+  assert.equal(normalizePrompt("   "), undefined);
+  assert.equal(normalizePrompt("x".repeat(700)).length, 600);
+});
+
+test("normalizePrompt rejects non-string values", () => {
+  assert.throws(() => normalizePrompt(["bad"]), /Invalid prompt/);
 });
 
 test("webSearchTool enables web search with a German default location", () => {
@@ -98,6 +112,7 @@ test("createIdeaWithOpenAI sends a structured Responses API request", async () =
   const idea = await createIdeaWithOpenAI({
     category: "tool",
     difficulty: "intermediate",
+    prompt: "GitHub Release Checklisten fuer Solo-Entwickler",
     fetchImpl: async (url, options) => {
       capturedRequest = { url, options };
       return {
@@ -141,6 +156,7 @@ test("createIdeaWithOpenAI sends a structured Responses API request", async () =
   assert.deepEqual(body.tools.map((tool) => tool.type), ["web_search"]);
   assert.equal(body.tool_choice, "required");
   assert.equal(body.reasoning.effort, "low");
+  assert.match(body.input[1].content, /GitHub Release Checklisten fuer Solo-Entwickler/);
   assert.equal(body.text.format.type, "json_schema");
   assert.equal(body.text.format.strict, true);
   assert.equal(idea.category, "tool");

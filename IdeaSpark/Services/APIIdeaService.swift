@@ -4,6 +4,7 @@ struct APIIdeaService: IdeaGenerating {
     private struct GenerateIdeaRequest: Encodable {
         let category: String?
         let difficulty: String?
+        let prompt: String?
     }
 
     let baseURL: URL
@@ -22,7 +23,8 @@ struct APIIdeaService: IdeaGenerating {
 
     func generateIdea(
         category: IdeaCategory?,
-        difficulty: DifficultyLevel?
+        difficulty: DifficultyLevel?,
+        prompt: String? = nil
     ) async throws -> ProjectIdea {
         guard baseURL.scheme?.lowercased() == "https" else {
             throw IdeaGenerationError.invalidBackendURL
@@ -39,7 +41,8 @@ struct APIIdeaService: IdeaGenerating {
         request.httpBody = try JSONEncoder().encode(
             GenerateIdeaRequest(
                 category: category?.rawValue,
-                difficulty: difficulty?.rawValue
+                difficulty: difficulty?.rawValue,
+                prompt: Self.normalizedPrompt(prompt)
             )
         )
 
@@ -86,6 +89,15 @@ struct APIIdeaService: IdeaGenerating {
             #endif
             throw IdeaGenerationError.invalidResponse
         }
+    }
+
+    private static func normalizedPrompt(_ prompt: String?) -> String? {
+        guard let prompt else {
+            return nil
+        }
+
+        let trimmedPrompt = prompt.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmedPrompt.isEmpty ? nil : trimmedPrompt
     }
 
     private func perform(_ request: URLRequest) async throws -> (Data, URLResponse) {

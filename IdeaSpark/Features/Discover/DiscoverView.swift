@@ -13,6 +13,7 @@ struct DiscoverView: View {
     @State private var selectedCategory: IdeaCategory?
     @State private var selectedDifficulty: DifficultyLevel?
     @State private var selectedSource: IdeaSource = .local
+    @State private var ideaPrompt = ""
 
     var body: some View {
         ScrollView {
@@ -79,6 +80,25 @@ struct DiscoverView: View {
             .accessibilityLabel("Ideenquelle")
             .accessibilityIdentifier("discover.sourcePicker")
 
+            if selectedSource == .ai {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Stichworte")
+                        .font(.subheadline.weight(.semibold))
+                    TextField(
+                        "z.B. Fitness, Studenten, Gamification, Kalender",
+                        text: $ideaPrompt,
+                        axis: .vertical
+                    )
+                    .lineLimit(2...4)
+                    .textInputAutocapitalization(.sentences)
+                    .autocorrectionDisabled()
+                    .padding(12)
+                    .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 8))
+                    .accessibilityLabel("Stichworte fuer AI-Idee")
+                    .accessibilityIdentifier("discover.ideaPrompt")
+                }
+            }
+
             Button {
                 Task {
                     await generate()
@@ -137,7 +157,8 @@ struct DiscoverView: View {
             difficulty: selectedDifficulty,
             source: selectedSource,
             aiGenerationEnabled: aiGenerationEnabled,
-            backendURLString: backendURLString
+            backendURLString: backendURLString,
+            prompt: ideaPrompt
         )
 
         if let idea = viewModel.currentIdea {

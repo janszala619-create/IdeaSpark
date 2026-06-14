@@ -17,6 +17,7 @@ final class APIIdeaServiceTests: XCTestCase {
             let payload = try JSONDecoder().decode(GenerateIdeaPayload.self, from: body)
             XCTAssertEqual(payload.category, IdeaCategory.mobileApp.rawValue)
             XCTAssertEqual(payload.difficulty, DifficultyLevel.beginner.rawValue)
+            XCTAssertEqual(payload.prompt, "Fitness App fuer Studenten")
             let response = HTTPURLResponse(
                 url: request.url!,
                 statusCode: 200,
@@ -30,7 +31,11 @@ final class APIIdeaServiceTests: XCTestCase {
             session: Self.mockSession()
         )
 
-        let idea = try await service.generateIdea(category: .mobileApp, difficulty: .beginner)
+        let idea = try await service.generateIdea(
+            category: .mobileApp,
+            difficulty: .beginner,
+            prompt: " Fitness App fuer Studenten "
+        )
 
         XCTAssertEqual(idea.title, "StudySprint")
         XCTAssertEqual(idea.category, .mobileApp)
@@ -258,6 +263,7 @@ data.append(buffer, count: bytesRead)
 private struct GenerateIdeaPayload: Decodable {
     let category: String?
     let difficulty: String?
+    let prompt: String?
 }
 
 @MainActor
@@ -276,7 +282,8 @@ final class DiscoverViewModelTests: XCTestCase {
             difficulty: .beginner,
             source: .ai,
             aiGenerationEnabled: true,
-            backendURLString: "https://api.example.com"
+            backendURLString: "https://api.example.com",
+            prompt: "Kalender und Fokus"
         )
 
         XCTAssertEqual(viewModel.currentIdea, localIdea)
@@ -300,7 +307,8 @@ final class DiscoverViewModelTests: XCTestCase {
             difficulty: nil,
             source: .ai,
             aiGenerationEnabled: false,
-            backendURLString: "https://api.example.com"
+            backendURLString: "https://api.example.com",
+            prompt: "Kalender und Fokus"
         )
 
         XCTAssertEqual(viewModel.currentIdea, localIdea)
@@ -332,7 +340,8 @@ private actor StubIdeaService: IdeaGenerating {
 
     func generateIdea(
         category: IdeaCategory?,
-        difficulty: DifficultyLevel?
+        difficulty: DifficultyLevel?,
+        prompt: String?
     ) async throws -> ProjectIdea {
         try result.get()
     }

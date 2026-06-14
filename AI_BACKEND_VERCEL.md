@@ -6,7 +6,7 @@ Dieses Repo enthaelt ein kleines Vercel-Backend fuer die KI-Funktion der iOS-App
 POST /api/generate-idea
 ```
 
-Die iPhone-App sendet Kategorie und Schwierigkeit an diesen Endpunkt. Das Backend ruft OpenAI serverseitig auf, nutzt Web Search als Inspirationsquelle und gibt ein `ProjectIdea`-JSON zurueck, das die App direkt decodieren kann.
+Die iPhone-App sendet Kategorie, Schwierigkeit und optionale Nutzer-Stichworte an diesen Endpunkt. Das Backend ruft OpenAI serverseitig auf, nutzt Web Search als Inspirationsquelle und gibt ein `ProjectIdea`-JSON zurueck, das die App direkt decodieren kann.
 
 ## Warum ein Backend?
 
@@ -58,7 +58,13 @@ Wichtig: Nur die Basis-URL eintragen, nicht `/api/generate-idea`.
 
 5. Gehe zu **Entdecken**.
 6. Waehle bei Quelle **AI**.
-7. Tippe auf **Neue Idee generieren**.
+7. Gib optional Stichworte ein, zum Beispiel:
+
+```text
+Fitness fuer Studenten, Kalender, Gamification, iPhone Widget
+```
+
+8. Tippe auf **Neue Idee generieren**.
 
 ## Lokal testen
 
@@ -77,11 +83,13 @@ Die App sendet:
 ```json
 {
   "category": "webApp",
-  "difficulty": "beginner"
+  "difficulty": "beginner",
+  "prompt": "Fitness fuer Studenten, Kalender, Gamification"
 }
 ```
 
-Beide Felder duerfen auch fehlen. Das Backend waehlt dann passende Werte.
+Alle Felder duerfen fehlen. Das Backend waehlt dann passende Werte und sucht selbst einen aktuellen Bedarf.
+Wenn `prompt` gesetzt ist, macht das Backend aus den Stichworten eine vollstaendige App-Idee mit Zielgruppe, Nutzen, Kernfeatures und Erweiterungsidee.
 Jeder AI-Aufruf fuehrt eine Web-Suche aus und nutzt einen frischen Inspiration-Seed, damit die Antworten weniger schnell in dieselben Standardideen zurueckfallen.
 
 Die App erwartet:
