@@ -164,7 +164,37 @@ jobs:
           PY
             exit "$status"
           fi
+      - name: Build unsigned iPhone app
+        run: |
+          rm -rf DeviceBuild Payload IdeaSpark-unsigned.ipa
 
+          xcodebuild build \
+            -project IdeaSpark.xcodeproj \
+            -scheme IdeaSpark \
+            -configuration Release \
+            -destination "generic/platform=iOS" \
+            -derivedDataPath DeviceBuild \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            PRODUCT_BUNDLE_IDENTIFIER=com.janszala619.ideaspak
+
+      - name: Create unsigned IPA
+        run: |
+          mkdir -p Payload
+
+          cp -R \
+            DeviceBuild/Build/Products/Release-iphoneos/IdeaSpark.app \
+            Payload/IdeaSpark.app
+
+          zip -qry IdeaSpark-unsigned.ipa Payload
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: IdeaSpark-unsigned-ipa
+          path: IdeaSpark-unsigned.ipa
+          if-no-files-found: error
       - name: Upload build and test results
         if: always()
         uses: actions/upload-artifact@v4
