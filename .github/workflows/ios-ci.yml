@@ -19,6 +19,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Run backend tests
+        shell: pwsh
+        run: |
+          node --version
+          npm test
+
       - name: Run Windows preflight checks
         shell: pwsh
         run: .\scripts\Preflight-Windows.ps1 -SkipZip
