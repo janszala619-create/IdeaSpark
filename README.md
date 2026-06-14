@@ -54,6 +54,7 @@ Without Apple signing, the source files can be created and shared, but iOS will 
 
 See `TESTFLIGHT_WINDOWS.md` for the recommended Windows-to-iPhone testing path.
 See `VERIFICATION.md` for the latest local Windows verification evidence and the remaining macOS/Xcode gate.
+See `AI_BACKEND_VERCEL.md` for the Vercel/OpenAI backend used by the optional AI idea generation setting.
 
 ## Backend Configuration
 
@@ -62,6 +63,9 @@ The iOS app never stores AI provider secrets. It only sends requests to your own
 ```text
 POST /api/generate-idea
 ```
+
+This repository includes a Vercel-compatible backend at `api/generate-idea.js`.
+Deploy it from GitHub, set `OPENAI_API_KEY` as a Vercel environment variable, then enter the deployed Vercel base URL in the IdeaSpark Settings tab.
 
 Configure the base URL in one of two places:
 

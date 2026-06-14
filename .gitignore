@@ -15,6 +15,11 @@ build/
 TestResults/
 simulators.json
 
+# Local backend secrets
+.env
+.env.local
+.vercel/
+
 # macOS / Windows metadata
 .DS_Store
 Thumbs.db
