@@ -236,7 +236,11 @@ if bytesRead == 0 {
 }
 
 data.append(buffer, count: bytesRead)
+        }
 
+        return data
+    }
+    
     private static let validResponseData = """
     {
       "id": "33333333-3333-4333-8333-333333333333",
